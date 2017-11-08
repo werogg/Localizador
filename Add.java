@@ -15,7 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-//Començem crean una clase pública amb el nom Add la qual utilitza llibreries d'AppCompatActivity.
+//Començem crean una clase pública amb el nom Add la qual utilitza llibreries d'AppCompatActivity
 public class Add extends AppCompatActivity {
     
     //Aquesta part del codi serveix per la creació de l'activitat i li aplica el disseny corresponent
