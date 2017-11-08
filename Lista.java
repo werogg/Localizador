@@ -93,7 +93,9 @@ public class Lista extends AppCompatActivity {
             }
         }
     }
-
+    
+    
+    //Aquesta funció inicia el programa PHP per canviar la variable buzzing (si esta sonant) y posarla a 1 durant 15 segons
     public void activateBuzzer(String adr) throws IOException {
         URL url = new URL(adr);
 
