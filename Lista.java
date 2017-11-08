@@ -1,3 +1,4 @@
+//En aquesta part es dona el nom a l'arxiu, s'estableixen enllaços d'arxius i es carreguen llibreries
 package com.locators.wero.localizador;
 
 import android.content.Context;
@@ -35,10 +36,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+//Començem crean una clase pública amb el nom Lista la qual utilitza llibreries AppCompatActivity
 public class Lista extends AppCompatActivity {
+    
+    //Inicialitzem la llista amb objectes
     ListView listView;
+    //Creem la llista de valors que utilitzarà la llista d'objectes
     ArrayList<String> valores = new ArrayList<>();
 
+    //Aquesta funció estableix l'informació que ha d'utilitzar l'aplicació per omplir els camps de cada localitzador
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +81,7 @@ public class Lista extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
     }
 
+    //Aquesta funció s'executa al mantener premut un dels localitzadors
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         if (v.getId() == R.id.Lista) {
@@ -92,7 +99,9 @@ public class Lista extends AppCompatActivity {
 
         InputStream in = url.openStream();
     }
-
+    
+    
+    //Aquesta funció detecta les accions dins del menú de context creat al mantenir un localitzador premut
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
