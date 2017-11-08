@@ -1,3 +1,4 @@
+//En aquesta part es dona el nom a l'arxiu, s'estableixen enllaços d'arxius i es carreguen llibreries
 package com.locators.wero.localizador;
 
 import android.content.Context;
@@ -14,14 +15,17 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+//Començem crean una clase pública amb el nom Add la qual utilitza llibreries d'AppCompatActivity.
 public class Add extends AppCompatActivity {
-
+    
+    //Aquesta part del codi serveix per la creació de l'activitat i li aplica el disseny corresponent
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
     }
-
+    
+    //En aquesta funció inicialitzem les variables pels camps del nom, clau secreta... i les guardem com a objecte de la llista al fer clic al botó AÑADIR
     public void save(View view) throws IOException {
         EditText nombre = (EditText) findViewById(R.id.name);
         EditText key = (EditText) findViewById(R.id.key) ;
@@ -38,7 +42,6 @@ public class Add extends AppCompatActivity {
                 oos.writeObject(dispositivo);
                 oos.close();
                 fos.close();
-                //https://battlepvpmine.es/write_data.php?longitude=3.10&latitude=3.4&key=8A621E21A96A6E36
                 Toast.makeText(this, "El localizador " + sNombre + " ha sido añadido a la lista!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), MainActivity.class);
                 startActivity(intent);
