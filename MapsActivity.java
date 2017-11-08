@@ -1,3 +1,4 @@
+//En aquesta part es dona el nom a l'arxiu, s'estableixen enllaços d'arxius i es carreguen llibreries
 package com.locators.wero.localizador;
 
 import android.os.AsyncTask;
@@ -36,16 +37,21 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+//Començem crean una clase pública amb el nom MainActivity la qual utilitza llibreries FragmentActivity i OnMapReadyCallback
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+    //Aquí inicialitzem la API de GoogleMaps com a privada d'aquesta clase
     private GoogleMap mMap;
 
+    //Inicialitzem el dispositiu seleccionat (les seves dades)
     Dispositivo dispositivo;
-
+    
+    //Inicialitzem les variables de longitud i latitud
     Double longitude;
 
     Double latitude;
 
+    //Establim informació, estil, carreguem el mapa...
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,20 +60,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        
+        //Ens saltem les polítiques/normes d'utilització estricte d'internet d'aplicacions per ficar al sistema de conexions al front
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
+    //Aquesta funció genera el mapa visual i estableix el marcador que indica on es el nostre dispositiu
     @Override
     public void onMapReady(GoogleMap googleMap) {
         try {
@@ -95,6 +94,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(posDevice).title("Posicion del dispositivo"));
     }
 
+    //Aquesta funció és l'encarregada d'establir el valor de la latitud fent una connexió al programa en PHP per obtenir la latitud
     public void getLatitude() throws IOException {
         URL url = new URL("http://foro.battlepvpmine.es/get_latitude.php?key=" + dispositivo.getKey());
 
@@ -103,7 +103,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         latitude = Double.valueOf(reader.readLine());
 
     }
-
+    
+    
+    //Aquesta funció és l'encarregada d'establir el valor de la latitud fent una connexió al programa en PHP per obtenir la longitud
     public void getLongitude() throws IOException {
         System.out.println(dispositivo.getKey());
         URL url = new URL("http://foro.battlepvpmine.es/get_longitude.php?key=" + dispositivo.getKey());
