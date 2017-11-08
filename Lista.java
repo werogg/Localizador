@@ -44,7 +44,7 @@ public class Lista extends AppCompatActivity {
     //Creem la llista de valors que utilitzarà la llista d'objectes
     ArrayList<String> valores = new ArrayList<>();
 
-    //Aquesta funció estableix l'informació que ha d'utilitzar l'aplicació per omplir els camps de cada localitzador i establir l'estil
+    //Aquesta funció estableix l'informació que ha d'utilitzar l'aplicació per omplir els camps de cada localitzador i establir el disseny
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
